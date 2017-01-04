@@ -41,6 +41,12 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        Bullet projectile = coll.gameObject.GetComponent<Bullet>();
+        if (projectile != null)
+        {
+            Destroy(gameObject);
+
+        }
         //print(coll.gameObject);
     }
 }

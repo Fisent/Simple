@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
     public GameObject player;
     public GameObject bullet;
     public GameObject corpse;
+    public GameObject soundSystem;
     public float bulletSpeed = 200f;
     public float probabilityOfShoot;
 
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour {
     {
         if (player != null)
         {
-            GetComponent<AudioSource>().Play();
+            soundSystem.GetComponent<AudioSource>().Play();
             Vector2 myPos = transform.position;
             Vector3 spawnPos = new Vector3(myPos.x, myPos.y, 0.5f);
             Vector2 PlayerPos = player.transform.position;
