@@ -11,10 +11,13 @@ public class Enemy : MonoBehaviour {
     public float bulletSpeed = 200f;
     public float probabilityOfShoot;
 
+    private GameObject hurtSound;
+
 	// Use this for initialization
 	void Start () 
     {
-		
+        hurtSound = GameObject.Find("HurtSound");
+        soundSystem = GameObject.Find("SoundSystem");
 	}
 	
 	// Update is called once per frame
@@ -66,6 +69,7 @@ public class Enemy : MonoBehaviour {
         Bullet projectile = coll.gameObject.GetComponent<Bullet>();
         if (projectile != null)
         {
+            hurtSound.GetComponent<AudioSource>().Play();
             Instantiate(corpse, new Vector3(transform.position.x, transform.position.y, 0.5f), Quaternion.identity);
             Destroy(gameObject);
         }

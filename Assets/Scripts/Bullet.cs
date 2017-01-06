@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+    public bool friendly;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,7 +18,6 @@ public class Bullet : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        print(coll.gameObject);
         Destroy(gameObject);
     }
 

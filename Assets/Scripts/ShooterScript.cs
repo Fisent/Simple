@@ -8,6 +8,7 @@ public class ShooterScript : MonoBehaviour
     public GameObject bullet;
     public GameObject soundSystem;
     public float bulletSpeed = 10f;
+    public float rateOfFire = 0.1f;
 
 	// Use this for initialization
 	void Start () 
@@ -21,7 +22,11 @@ public class ShooterScript : MonoBehaviour
         RotateEveryFrame();
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Shoot();
+            InvokeRepeating("Shoot", 0.0001f, rateOfFire);
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            CancelInvoke("Shoot");
         }
 	}
 
