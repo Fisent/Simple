@@ -17,8 +17,8 @@ public class Building : MonoBehaviour {
 	void Start () 
     {
         thumpSound = GameObject.Find("ThumpSound");
-        SpawnSingle();
-        InvokeRepeating("SpawnRepeatly", 5f, respawnableEnemyFrequency);
+		Invoke ("SpawnSingle", 0.5f);
+        InvokeRepeating("SpawnRepeatly", 0.001f, respawnableEnemyFrequency);
 	}
 	
 	// Update is called once per frame
