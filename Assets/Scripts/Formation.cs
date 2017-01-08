@@ -22,7 +22,6 @@ public class Formation : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		timer++;
-		print (timer);
 		if (timer % delay == 0) {
 			Spawn ();
 		}

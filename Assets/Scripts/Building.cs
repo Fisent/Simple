@@ -17,7 +17,7 @@ public class Building : MonoBehaviour {
 	void Start () 
     {
         thumpSound = GameObject.Find("ThumpSound");
-		Invoke ("SpawnSingle", 0.5f);
+		Invoke ("SpawnSingle", 50f);
         InvokeRepeating("SpawnRepeatly", 0.001f, respawnableEnemyFrequency);
 	}
 	
@@ -32,11 +32,10 @@ public class Building : MonoBehaviour {
         if(singleEnemy!=null)
         {
             
-            Vector3 spawnPosition = new Vector3(transform.position.x-1f, transform.position.y, 0f);
+            Vector3 spawnPosition = new Vector3(transform.parent.position.x-1f, transform.parent.position.y, 0f);
             for (int i = 0; i < singleEnemyCount; i++)
             {
                 GameObject enemy = Instantiate(singleEnemy, spawnPosition, Quaternion.identity) as GameObject;
-                //spawnPosition += Vector3.right;
             }
         }
     }
@@ -46,8 +45,8 @@ public class Building : MonoBehaviour {
         if(respawnableEnemy!=null)
         {
 
-            Vector3 spawnPosition = new Vector3(transform.position.x-1f, transform.position.y, 0f);
-            GameObject enemy = Instantiate(singleEnemy, spawnPosition, Quaternion.identity) as GameObject;
+            Vector3 spawnPosition = new Vector3(transform.parent.position.x-1f, transform.parent.position.y, 0f);
+            GameObject enemy = Instantiate(respawnableEnemy, spawnPosition, Quaternion.identity) as GameObject;
         }
     }
 
