@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        Bullet projectile = coll.gameObject.GetComponent<Bullet>();
+		ProjectileAbstract projectile = coll.gameObject.GetComponent<ProjectileAbstract>();
         if (projectile != null)
         {
             hurtSound.GetComponent<AudioSource>().Play();

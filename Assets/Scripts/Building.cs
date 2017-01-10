@@ -17,8 +17,8 @@ public class Building : MonoBehaviour {
 	void Start () 
     {
         thumpSound = GameObject.Find("ThumpSound");
-		Invoke ("SpawnSingle", 50f);
-        InvokeRepeating("SpawnRepeatly", 0.001f, respawnableEnemyFrequency);
+		Invoke ("SpawnSingle", 1f);
+        InvokeRepeating("SpawnRepeatly", 3f, respawnableEnemyFrequency);
 	}
 	
 	// Update is called once per frame
@@ -29,6 +29,7 @@ public class Building : MonoBehaviour {
 
     public void SpawnSingle()
     {
+		
         if(singleEnemy!=null)
         {
             
@@ -61,7 +62,8 @@ public class Building : MonoBehaviour {
             hp--;
             if (hp < 0)
             {
-                Instantiate(ruins, transform.position, Quaternion.identity);
+				GameObject go = Instantiate(ruins, transform.position, Quaternion.identity) as GameObject;
+				go.transform.parent = transform.parent;
                 Destroy(gameObject);
             }
         }

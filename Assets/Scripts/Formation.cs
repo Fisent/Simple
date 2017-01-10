@@ -44,12 +44,10 @@ public class Formation : MonoBehaviour {
 
 		if (spawn.childCount != 0) {
 			
-			Destroy(spawn.GetChild (0));
+			Destroy(spawn.GetChild (0).gameObject);
 		}
 		GameObject building = Instantiate (buildings [buildingNumber], spawn.position, Quaternion.identity);
 		building.transform.parent = spawn;
 		delay = Mathf.Max (delay - 1, 50);
 	}
-
-
 }
