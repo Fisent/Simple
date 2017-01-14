@@ -11,13 +11,20 @@ public class Enemy : MonoBehaviour {
     public float bulletSpeed = 200f;
     public float probabilityOfShoot;
 
+	public bool obstacleAvoidRight = true;
+	public bool obstacleAvoidUp = true;
+
     private GameObject hurtSound;
+	private float prevX;
+	private float prevY;
 
 	// Use this for initialization
 	void Start () 
     {
         hurtSound = GameObject.Find("HurtSound");
         soundSystem = GameObject.Find("SoundSystem");
+		prevX = 0;
+		prevY = 0;
 	}
 	
 	// Update is called once per frame
@@ -27,6 +34,8 @@ public class Enemy : MonoBehaviour {
             ShootAtPlayer();
         }
         MoveTowardsPlayer();
+		ObstacleAvoidCheck ();
+
 	}
 
     public void Trigger(GameObject pl)
@@ -74,4 +83,25 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+	void ObstacleAvoidCheck()
+	{
+		print (prevX + "," + transform.position.x + "   " + prevY + "," + transform.position.y);
+		if (player != null && prevX == transform.position.x && prevY == transform.position.y) {
+			if (prevX == transform.position.x) {
+				if (obstacleAvoidRight)
+					GetComponent<Rigidbody2D> ().velocity += Vector2.right * 5f;
+				else
+					GetComponent<Rigidbody2D> ().velocity += Vector2.left * 5f;
+			}
+			if (prevY == transform.position.y) {
+				if (obstacleAvoidUp)
+					GetComponent<Rigidbody2D> ().velocity += Vector2.up * 5f;
+				else
+					GetComponent<Rigidbody2D> ().velocity += Vector2.down * 5f;
+			}
+			prevX = transform.position.x;
+			prevY = transform.position.y;
+		}
+	}
 }

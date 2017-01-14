@@ -33,7 +33,7 @@ public class Building : MonoBehaviour {
         if(singleEnemy!=null)
         {
             
-            Vector3 spawnPosition = new Vector3(transform.parent.position.x-1f, transform.parent.position.y, 0f);
+            Vector3 spawnPosition = new Vector3(transform.parent.position.x, transform.parent.position.y -1f, 0f);
             for (int i = 0; i < singleEnemyCount; i++)
             {
                 GameObject enemy = Instantiate(singleEnemy, spawnPosition, Quaternion.identity) as GameObject;
@@ -46,7 +46,7 @@ public class Building : MonoBehaviour {
         if(respawnableEnemy!=null)
         {
 
-            Vector3 spawnPosition = new Vector3(transform.parent.position.x-1f, transform.parent.position.y, 0f);
+            Vector3 spawnPosition = new Vector3(transform.parent.position.x, transform.parent.position.y - 1f, 0f);
             GameObject enemy = Instantiate(respawnableEnemy, spawnPosition, Quaternion.identity) as GameObject;
         }
     }

@@ -5,10 +5,23 @@ public class Player : MonoBehaviour {
 
     public float speed = 500f;
 
+
+
+
+
+	//range from 0 to 3;
+	// 0 - pistol
+	// 1 - machine gun
+	// 2 - laser gun
+	// 3 - rocket launcher
+	private int level;
+
+
+
 	// Use this for initialization
 	void Start () 
     {
-	    
+		
 	}
 	
 	// Update is called once per frame
@@ -49,4 +62,6 @@ public class Player : MonoBehaviour {
         }
         //print(coll.gameObject);
     }
+
+
 }
