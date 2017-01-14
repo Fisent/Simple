@@ -21,10 +21,11 @@ public class Formation : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		timer++;
+		
 		if (timer % delay == 0) {
 			Spawn ();
 		}
+        timer++;
 	}
 
 	public void Spawn()
